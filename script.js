@@ -157,11 +157,11 @@ function createFloatingQuote() {
     const isLeftSide = Math.random() < 0.5;
     
     if (isLeftSide) {
-        // Left side: 5% to 25% from left edge
-        quoteBubble.style.left = Math.random() * 20 + 5 + '%';
+        // Left side: 5% to 30% from left edge
+        quoteBubble.style.left = Math.random() * 25 + 5 + '%';
     } else {
-        // Right side: 75% to 95% from left edge (5% to 25% from right edge)
-        quoteBubble.style.left = Math.random() * 20 + 75 + '%';
+        // Right side: 70% to 90% from left edge (10% to 30% from right edge)
+        quoteBubble.style.left = Math.random() * 20 + 70 + '%';
     }
     
     // Vertical position: 20% to 80% from top
