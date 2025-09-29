@@ -116,11 +116,12 @@ function initFloatingQuotes() {
         setTimeout(() => {
             // Remove existing quote on this side before creating new one
             if (activeQuotes[side]) {
-                activeQuotes[side].style.opacity = '0';
-                activeQuotes[side].style.transform = 'translateY(-20px)';
+                const oldQuote = activeQuotes[side];
+                oldQuote.style.opacity = '0';
+                oldQuote.style.transform = 'translateY(-20px)';
                 setTimeout(() => {
-                    if (activeQuotes[side] && activeQuotes[side].parentNode) {
-                        activeQuotes[side].parentNode.removeChild(activeQuotes[side]);
+                    if (oldQuote && oldQuote.parentNode) {
+                        oldQuote.parentNode.removeChild(oldQuote);
                     }
                     activeQuotes[side] = null;
                     // Create new quote after old one is removed
@@ -134,11 +135,25 @@ function initFloatingQuotes() {
         }, randomDelay);
     }
     
+    // Clear any existing quotes first
+    function clearAllQuotes() {
+        const existingQuotes = document.querySelectorAll('.quote-bubble');
+        existingQuotes.forEach(quote => {
+            if (quote.parentNode) {
+                quote.parentNode.removeChild(quote);
+            }
+        });
+        activeQuotes = { left: null, right: null };
+    }
+    
+    // Clear existing quotes and start fresh
+    clearAllQuotes();
+    
     // Start independent quote scheduling for both sides
     scheduleRandomQuote('left');
     scheduleRandomQuote('right');
     
-    // Test: Create first quotes with staggered timing
+    // Create first quotes with staggered timing
     setTimeout(() => createFloatingQuote('left'), 2000);
     setTimeout(() => createFloatingQuote('right'), 4000);
 }
