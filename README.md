@@ -1,6 +1,8 @@
-# WCP Author Website
+# Wendi Coffman Porter Author Website
 
-A stunning, artistic author website showcasing the works of WCP, a prolific writer of science fiction, fantasy, romance, crime thrillers, and historical fiction.
+A stunning, artistic author website showcasing the works of Wendi Coffman Porter, a prolific writer of science fiction, fantasy, romance, crime thrillers, and historical fiction.
+
+**Website:** wendicoffmanporter.com
 
 ## Features
 
@@ -16,7 +18,7 @@ A stunning, artistic author website showcasing the works of WCP, a prolific writ
 ## File Structure
 
 ```
-WCP.com/
+wendicoffmanporter.com/
 ├── index.html          # Main HTML file
 ├── styles.css          # CSS styling and animations
 ├── script.js           # JavaScript functionality

@@ -123,7 +123,11 @@ function createFloatingQuote() {
         "A writer's job is to make the impossible seem inevitable.",
         "Every character is a piece of the author's soul.",
         "The greatest adventures begin with a single word.",
-        "In the silence between words, magic happens."
+        "In the silence between words, magic happens.",
+        "From the depths of space to the corridors of power, stories transport us.",
+        "Every mystery holds a truth waiting to be discovered.",
+        "The future belongs to those who dare to dream it.",
+        "In the shadows of history, love finds its way."
     ];
 
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
