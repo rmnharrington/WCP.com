@@ -150,10 +150,22 @@ function createFloatingQuote() {
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
     
-    // Random position within hero section bounds - better centered
+    // Position on left or right side only, avoiding center
     quoteBubble.style.position = 'absolute';
-    quoteBubble.style.left = Math.random() * 60 + 20 + '%';
-    quoteBubble.style.top = Math.random() * 40 + 30 + '%';
+    
+    // Randomly choose left or right side
+    const isLeftSide = Math.random() < 0.5;
+    
+    if (isLeftSide) {
+        // Left side: 5% to 25% from left edge
+        quoteBubble.style.left = Math.random() * 20 + 5 + '%';
+    } else {
+        // Right side: 75% to 95% from left edge (5% to 25% from right edge)
+        quoteBubble.style.left = Math.random() * 20 + 75 + '%';
+    }
+    
+    // Vertical position: 20% to 80% from top
+    quoteBubble.style.top = Math.random() * 60 + 20 + '%';
     quoteBubble.style.opacity = '0';
     quoteBubble.style.transform = 'translateY(20px)';
     quoteBubble.style.transition = 'all 0.5s ease';
