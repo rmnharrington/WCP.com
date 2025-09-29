@@ -114,25 +114,9 @@ function initFloatingQuotes() {
     function scheduleRandomQuote(side) {
         const randomDelay = Math.random() * 6000 + 3000; // 3-9 seconds
         setTimeout(() => {
-            // Remove any existing quotes on this side before creating a new one
-            removeExistingQuotes(side);
             createFloatingQuote(side);
             scheduleRandomQuote(side); // Schedule the next one
         }, randomDelay);
-    }
-    
-    // Function to remove existing quotes on a specific side
-    function removeExistingQuotes(side) {
-        const existingQuotes = document.querySelectorAll(`.quote-bubble[data-side="${side}"]`);
-        existingQuotes.forEach(quote => {
-            quote.style.opacity = '0';
-            quote.style.transform = 'translateY(-20px)';
-            setTimeout(() => {
-                if (quote.parentNode) {
-                    quote.parentNode.removeChild(quote);
-                }
-            }, 300);
-        });
     }
     
     // Start independent quote scheduling for both sides
@@ -175,7 +159,6 @@ function createFloatingQuote(side = null) {
     const randomQuote = quotes[randomIndex];
     const quoteBubble = document.createElement('div');
     quoteBubble.className = 'quote-bubble floating-quote';
-    quoteBubble.setAttribute('data-side', isLeftSide ? 'left' : 'right');
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
     
     // Position on specified side or randomly choose
