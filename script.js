@@ -110,17 +110,23 @@ function initFloatingQuotes() {
         });
     });
 
-    // Create new floating quotes periodically
-    setInterval(createFloatingQuote, 8000);
+    // Create new floating quotes periodically - both sides simultaneously
+    setInterval(() => {
+        createFloatingQuote('left');
+        createFloatingQuote('right');
+    }, 8000);
     
-    // Test: Create first quote immediately
-    setTimeout(createFloatingQuote, 2000);
+    // Test: Create first quotes immediately
+    setTimeout(() => {
+        createFloatingQuote('left');
+        createFloatingQuote('right');
+    }, 2000);
 }
 
 // Track last used quote to avoid immediate repeats
 let lastUsedQuoteIndex = -1;
 
-function createFloatingQuote() {
+function createFloatingQuote(side = null) {
     const quotes = [
         "\"Your morning essentials, Doc,\" he said, dropping the stack onto her desk with a practiced thud. \"Caffeine, calamity, and correspondence. In order of importance.\"",
         "Every instinct in her begged her to stay right there, in the stillness between breaths, wrapped in warmth and safety and something far more dangerous than either.",
@@ -150,18 +156,18 @@ function createFloatingQuote() {
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
     
-    // Position on left or right side only, avoiding center
+    // Position on specified side or randomly choose
     quoteBubble.style.position = 'absolute';
     
-    // Randomly choose left or right side
-    const isLeftSide = Math.random() < 0.5;
+    // Use provided side or randomly choose
+    const isLeftSide = side === 'left' || (side === null && Math.random() < 0.5);
     
     if (isLeftSide) {
-        // Left side: 5% to 30% from left edge
-        quoteBubble.style.left = Math.random() * 25 + 5 + '%';
+        // Left side: 5% to 25% from left edge
+        quoteBubble.style.left = Math.random() * 20 + 5 + '%';
     } else {
-        // Right side: 70% to 90% from left edge (10% to 30% from right edge)
-        quoteBubble.style.left = Math.random() * 20 + 70 + '%';
+        // Right side: 65% to 80% from left edge (20% to 35% from right edge) - closer to center
+        quoteBubble.style.left = Math.random() * 15 + 65 + '%';
     }
     
     // Vertical position: 20% to 80% from top
