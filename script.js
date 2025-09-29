@@ -121,8 +121,6 @@ function initFloatingQuotes() {
 let lastUsedQuoteIndex = -1;
 
 function createFloatingQuote() {
-    console.log('createFloatingQuote called'); // Debug log
-    
     const quotes = [
         "\"Your morning essentials, Doc,\" he said, dropping the stack onto her desk with a practiced thud. \"Caffeine, calamity, and correspondence. In order of importance.\"",
         "Every instinct in her begged her to stay right there, in the stillness between breaths, wrapped in warmth and safety and something far more dangerous than either.",
@@ -148,29 +146,23 @@ function createFloatingQuote() {
     
     lastUsedQuoteIndex = randomIndex;
     const randomQuote = quotes[randomIndex];
-    
-    console.log('Selected quote:', randomQuote); // Debug log
     const quoteBubble = document.createElement('div');
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
     
-    // Random position within hero section bounds
+    // Random position within hero section bounds - better centered
     quoteBubble.style.position = 'absolute';
-    quoteBubble.style.left = Math.random() * 70 + 15 + '%';
-    quoteBubble.style.top = Math.random() * 50 + 25 + '%';
+    quoteBubble.style.left = Math.random() * 60 + 20 + '%';
+    quoteBubble.style.top = Math.random() * 40 + 30 + '%';
     quoteBubble.style.opacity = '0';
     quoteBubble.style.transform = 'translateY(20px)';
     quoteBubble.style.transition = 'all 0.5s ease';
     quoteBubble.style.maxWidth = '250px';
     
     const heroBackground = document.querySelector('.hero-background');
-    console.log('Hero background element:', heroBackground); // Debug log
     
     if (heroBackground) {
         heroBackground.appendChild(quoteBubble);
-        console.log('Quote bubble added to DOM'); // Debug log
-    } else {
-        console.error('Hero background element not found!'); // Debug log
     }
     
     // Animate in
