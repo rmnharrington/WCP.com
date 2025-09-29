@@ -135,13 +135,14 @@ function createFloatingQuote() {
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
     
-    // Random position
+    // Random position within hero section bounds
     quoteBubble.style.position = 'absolute';
-    quoteBubble.style.left = Math.random() * 80 + 10 + '%';
-    quoteBubble.style.top = Math.random() * 60 + 20 + '%';
+    quoteBubble.style.left = Math.random() * 70 + 15 + '%';
+    quoteBubble.style.top = Math.random() * 50 + 25 + '%';
     quoteBubble.style.opacity = '0';
     quoteBubble.style.transform = 'translateY(20px)';
     quoteBubble.style.transition = 'all 0.5s ease';
+    quoteBubble.style.maxWidth = '250px';
     
     document.querySelector('.hero-background').appendChild(quoteBubble);
     
