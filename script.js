@@ -110,17 +110,22 @@ function initFloatingQuotes() {
         });
     });
 
-    // Create new floating quotes periodically - both sides simultaneously
-    setInterval(() => {
-        createFloatingQuote('left');
-        createFloatingQuote('right');
-    }, 8000);
+    // Create floating quotes with independent random timing for each side
+    function scheduleRandomQuote(side) {
+        const randomDelay = Math.random() * 6000 + 3000; // 3-9 seconds
+        setTimeout(() => {
+            createFloatingQuote(side);
+            scheduleRandomQuote(side); // Schedule the next one
+        }, randomDelay);
+    }
     
-    // Test: Create first quotes immediately
-    setTimeout(() => {
-        createFloatingQuote('left');
-        createFloatingQuote('right');
-    }, 2000);
+    // Start independent quote scheduling for both sides
+    scheduleRandomQuote('left');
+    scheduleRandomQuote('right');
+    
+    // Test: Create first quotes with staggered timing
+    setTimeout(() => createFloatingQuote('left'), 2000);
+    setTimeout(() => createFloatingQuote('right'), 4000);
 }
 
 // Track last used quote to avoid immediate repeats
