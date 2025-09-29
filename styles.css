@@ -318,9 +318,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .genres-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .genre-card {
@@ -858,6 +861,7 @@ h1, h2, h3, h4, h5, h6 {
     
     .genres-grid {
         grid-template-columns: 1fr;
+        max-width: 100%;
     }
     
     .about-content {
