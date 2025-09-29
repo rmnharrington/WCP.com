@@ -335,6 +335,9 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .genre-card::before {
@@ -345,6 +348,23 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 5px;
     background: var(--gradient-accent);
+    z-index: 1;
+}
+
+.genre-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.genre-card:hover::after {
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .genre-card:hover {
@@ -356,18 +376,24 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .genre-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    position: relative;
+    z-index: 2;
 }
 
 .genre-card p {
     color: #666;
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    position: relative;
+    z-index: 2;
 }
 
 .genre-quote {
@@ -375,6 +401,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem;
     border-radius: 10px;
     border-left: 4px solid var(--accent-color);
+    position: relative;
+    z-index: 2;
 }
 
 .genre-quote p {
@@ -382,6 +410,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-dark);
     margin: 0;
     font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Writing Section */
