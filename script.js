@@ -114,9 +114,8 @@ function initFloatingQuotes() {
     setInterval(createFloatingQuote, 8000);
 }
 
-// Track used quotes to avoid immediate repeats
-let usedQuotes = [];
-let allQuotesUsed = false;
+// Track last used quote to avoid immediate repeats
+let lastUsedQuoteIndex = -1;
 
 function createFloatingQuote() {
     const quotes = [
@@ -135,30 +134,15 @@ function createFloatingQuote() {
         ""The necromancer," she said slowly, each word pulled up from the place where memory had been buried deep and carefully. "He used to talk about her. He'd mention her while he was carving into my bones. Always with reverence. Almost with sorrow.""
     ];
 
-    let randomQuote;
+    let randomIndex;
     
-    // If all quotes have been used, reset the tracking
-    if (allQuotesUsed || usedQuotes.length >= quotes.length) {
-        usedQuotes = [];
-        allQuotesUsed = false;
-    }
+    // Simple logic: pick a random quote that's not the same as the last one
+    do {
+        randomIndex = Math.floor(Math.random() * quotes.length);
+    } while (randomIndex === lastUsedQuoteIndex && quotes.length > 1);
     
-    // Find a quote that hasn't been used recently
-    let availableQuotes = quotes.filter((quote, index) => !usedQuotes.includes(index));
-    
-    // If all quotes are in the used list, reset and use all quotes
-    if (availableQuotes.length === 0) {
-        usedQuotes = [];
-        availableQuotes = quotes;
-    }
-    
-    // Select a random quote from available quotes
-    const randomIndex = Math.floor(Math.random() * availableQuotes.length);
-    randomQuote = availableQuotes[randomIndex];
-    
-    // Find the original index of the selected quote
-    const originalIndex = quotes.indexOf(randomQuote);
-    usedQuotes.push(originalIndex);
+    lastUsedQuoteIndex = randomIndex;
+    const randomQuote = quotes[randomIndex];
     const quoteBubble = document.createElement('div');
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
