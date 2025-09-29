@@ -114,24 +114,51 @@ function initFloatingQuotes() {
     setInterval(createFloatingQuote, 8000);
 }
 
+// Track used quotes to avoid immediate repeats
+let usedQuotes = [];
+let allQuotesUsed = false;
+
 function createFloatingQuote() {
     const quotes = [
-        "The stars whispered secrets only the brave could hear...",
-        "In the shadows of history, love finds its way.",
-        "The future belongs to those who dare to dream it.",
-        "Every mystery holds a truth waiting to be discovered.",
-        "The pen is mightier than the sword, but the imagination is mightier than both.",
-        "In every story lies a universe waiting to be explored.",
-        "Words have the power to create worlds and destroy empires.",
-        "The best stories are those that make us question everything we know.",
-        "A writer's job is to make the impossible seem inevitable.",
-        "Every character is a piece of the author's soul.",
-        "The greatest adventures begin with a single word.",
-        "In the silence between words, magic happens.",
-        "From the depths of space to the corridors of power, stories transport us."
+        ""Your morning essentials, Doc," he said, dropping the stack onto her desk with a practiced thud. "Caffeine, calamity, and correspondence. In order of importance."",
+        "Every instinct in her begged her to stay right there, in the stillness between breaths, wrapped in warmth and safety and something far more dangerous than either.",
+        "The blade had been forged by the queen's consort—a brilliant, cruel woman of ice and calculation—and given to Resshael not just to slay the necromancers, but to trap them.",
+        "It would be their sworn duty to police the gateways between the two realms and ensure that the chaos of the aether never again affected the law and order of the Kassian people.",
+        "I understand you are feeling off balance, Lei. As an operator, I know how hard it can be to operate completely independent of any authority, but we can only control so much. Even the gods have their limits.",
+        "Floating over the top of the blank page was a long yellow and white feather with a solid gold quill shaft and tip. The downy vanes rippled gently in the breeze, as the entire feather gently rose and fell away from the book, almost as if it were breathing.",
+        "The living thing that sits on the wayside and does not fight for resources, has only one path available to it, death.",
+        "Helena leaned against the bar, her weight settled comfortably against the worn wood, fingers idly tracing the faint grooves and nicks carved into its surface as she quietly observed the shifting currents of the tavern.",
+        ""You think your guilt is worth more than justice?" Helena interrupted, voice as cool and flat as the stone beneath them. "You'd rather let the real murderer walk free, just so you can wallow in self-pity?"",
+        "A single flex of his fingers, and she was lifted from the ground, her tiny body dangling like a broken marionette.",
+        "She stood like a creature made for places like this—a predator at ease, watching the chaos she had orchestrated unfold with a faint, knowing smirk.",
+        "She hadn't built Umbra Reserve to survive an apocalypse, but she had prepared for the worst. The distillery itself? Easily rebuilt. But the liquor? That was something else. Alcohol was always valuable, always barter-worthy, no matter what happened to the world around it. ",
+        ""The necromancer," she said slowly, each word pulled up from the place where memory had been buried deep and carefully. "He used to talk about her. He'd mention her while he was carving into my bones. Always with reverence. Almost with sorrow.""
     ];
 
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    let randomQuote;
+    
+    // If all quotes have been used, reset the tracking
+    if (allQuotesUsed || usedQuotes.length >= quotes.length) {
+        usedQuotes = [];
+        allQuotesUsed = false;
+    }
+    
+    // Find a quote that hasn't been used recently
+    let availableQuotes = quotes.filter((quote, index) => !usedQuotes.includes(index));
+    
+    // If all quotes are in the used list, reset and use all quotes
+    if (availableQuotes.length === 0) {
+        usedQuotes = [];
+        availableQuotes = quotes;
+    }
+    
+    // Select a random quote from available quotes
+    const randomIndex = Math.floor(Math.random() * availableQuotes.length);
+    randomQuote = availableQuotes[randomIndex];
+    
+    // Find the original index of the selected quote
+    const originalIndex = quotes.indexOf(randomQuote);
+    usedQuotes.push(originalIndex);
     const quoteBubble = document.createElement('div');
     quoteBubble.className = 'quote-bubble floating-quote';
     quoteBubble.innerHTML = `<p>${randomQuote}</p>`;
