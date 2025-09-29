@@ -392,7 +392,7 @@ h1, h2, h3, h4, h5, h6 {
 .genre-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: #ffffff;
     position: relative;
     z-index: 2;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -400,12 +400,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .genre-card p {
-    color: #444;
+    color: #f0f0f0;
     margin-bottom: 1.5rem;
     line-height: 1.6;
     position: relative;
     z-index: 2;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     font-weight: 500;
 }
 
@@ -421,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .genre-quote p {
     font-style: italic;
-    color: var(--text-dark);
+    color: #ffffff;
     margin: 0;
     font-size: 1.1rem;
     position: relative;
@@ -445,18 +445,13 @@ h1, h2, h3, h4, h5, h6 {
 .sample-card {
     background: white;
     border-radius: 15px;
-    padding: 0;
+    padding: 2rem;
     box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
     border-left: 5px solid var(--accent-color);
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 300px;
     display: flex;
-    align-items: center;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
 .sample-card:hover {
@@ -464,26 +459,27 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-strong);
 }
 
-.book-cover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
-    z-index: 1;
+.book-cover-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 180px;
     transition: all 0.3s ease;
 }
 
-.sample-card:hover .book-cover-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+.book-cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.sample-card:hover .book-cover-image {
+    transform: scale(1.05);
 }
 
 .sample-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-    width: 100%;
+    flex: 1;
+    min-width: 0;
 }
 
 .sample-header {
@@ -497,9 +493,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .sample-header h3 {
     font-size: 1.8rem;
-    color: #ffffff;
+    color: var(--text-dark);
     margin: 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .sample-genre {
@@ -514,10 +509,9 @@ h1, h2, h3, h4, h5, h6 {
 .sample-text {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #f0f0f0;
+    color: #555;
     margin-bottom: 1.5rem;
     font-style: italic;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .sample-meta {
@@ -528,15 +522,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .word-count, .publish-status {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: #666;
     font-weight: 500;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .publish-status {
-    color: #ffd700;
+    color: var(--accent-color);
     font-weight: 600;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* Audio Section */
@@ -573,6 +565,24 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     padding: 2rem;
     border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.audio-file {
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.audio-file::-webkit-media-controls-panel {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.audio-file::-webkit-media-controls-play-button,
+.audio-file::-webkit-media-controls-pause-button {
+    background-color: var(--accent-color);
+    border-radius: 50%;
 }
 
 .player-header {
@@ -705,6 +715,22 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.author-photo {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: var(--shadow-strong);
+    transition: all 0.3s ease;
+    background: var(--gradient-primary);
+    padding: 20px;
+}
+
+.author-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
 .image-placeholder {
     width: 300px;
     height: 400px;
@@ -783,6 +809,17 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     color: var(--accent-color);
     width: 30px;
+}
+
+.contact-method a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
 .contact-form {
@@ -1031,4 +1068,18 @@ html {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design for Writing Samples */
+@media (max-width: 768px) {
+    .sample-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .book-cover-image {
+        width: 100px;
+        height: 150px;
+        margin: 0 auto;
+    }
 }
