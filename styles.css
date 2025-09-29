@@ -338,7 +338,7 @@ h1, h2, h3, h4, h5, h6 {
 .genre-card {
     background: white;
     border-radius: 20px;
-    padding: 0;
+    padding: 2rem;
     text-align: center;
     box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
@@ -347,10 +347,6 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .genre-card::before {
@@ -364,26 +360,20 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
 }
 
-.book-cover-overlay {
+.genre-card::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
-    z-index: 1;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 0;
     transition: all 0.3s ease;
 }
 
-.genre-card:hover .book-cover-overlay {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
-}
-
-.genre-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-    width: 100%;
+.genre-card:hover::after {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .genre-card:hover {
@@ -395,38 +385,47 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
 }
 
 .genre-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: var(--text-dark);
+    position: relative;
+    z-index: 2;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     font-weight: 700;
 }
 
 .genre-card p {
-    color: #f0f0f0;
+    color: #444;
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
     font-weight: 500;
 }
 
 .genre-quote {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(212, 175, 55, 0.2);
     padding: 1rem;
     border-radius: 10px;
     border-left: 4px solid var(--accent-color);
+    position: relative;
+    z-index: 2;
     backdrop-filter: blur(5px);
 }
 
 .genre-quote p {
     font-style: italic;
-    color: #ffffff;
+    color: var(--text-dark);
     margin: 0;
     font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
     font-weight: 600;
 }
@@ -446,15 +445,45 @@ h1, h2, h3, h4, h5, h6 {
 .sample-card {
     background: white;
     border-radius: 15px;
-    padding: 2rem;
+    padding: 0;
     box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
     border-left: 5px solid var(--accent-color);
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
 }
 
 .sample-card:hover {
     transform: translateX(10px);
     box-shadow: var(--shadow-strong);
+}
+
+.book-cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.sample-card:hover .book-cover-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.sample-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    width: 100%;
 }
 
 .sample-header {
@@ -468,8 +497,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .sample-header h3 {
     font-size: 1.8rem;
-    color: var(--text-dark);
+    color: #ffffff;
     margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .sample-genre {
@@ -484,9 +514,10 @@ h1, h2, h3, h4, h5, h6 {
 .sample-text {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #555;
+    color: #f0f0f0;
     margin-bottom: 1.5rem;
     font-style: italic;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .sample-meta {
@@ -497,13 +528,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .word-count, .publish-status {
     font-size: 0.9rem;
-    color: #666;
+    color: #ffffff;
     font-weight: 500;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .publish-status {
-    color: var(--accent-color);
+    color: #ffd700;
     font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 /* Audio Section */
