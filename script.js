@@ -124,7 +124,7 @@ function createFloatingQuote() {
     console.log('createFloatingQuote called'); // Debug log
     
     const quotes = [
-        ""Your morning essentials, Doc," he said, dropping the stack onto her desk with a practiced thud. "Caffeine, calamity, and correspondence. In order of importance."",
+        "\"Your morning essentials, Doc,\" he said, dropping the stack onto her desk with a practiced thud. \"Caffeine, calamity, and correspondence. In order of importance.\"",
         "Every instinct in her begged her to stay right there, in the stillness between breaths, wrapped in warmth and safety and something far more dangerous than either.",
         "The blade had been forged by the queen's consort—a brilliant, cruel woman of ice and calculation—and given to Resshael not just to slay the necromancers, but to trap them.",
         "It would be their sworn duty to police the gateways between the two realms and ensure that the chaos of the aether never again affected the law and order of the Kassian people.",
@@ -132,11 +132,11 @@ function createFloatingQuote() {
         "Floating over the top of the blank page was a long yellow and white feather with a solid gold quill shaft and tip. The downy vanes rippled gently in the breeze, as the entire feather gently rose and fell away from the book, almost as if it were breathing.",
         "The living thing that sits on the wayside and does not fight for resources, has only one path available to it, death.",
         "Helena leaned against the bar, her weight settled comfortably against the worn wood, fingers idly tracing the faint grooves and nicks carved into its surface as she quietly observed the shifting currents of the tavern.",
-        ""You think your guilt is worth more than justice?" Helena interrupted, voice as cool and flat as the stone beneath them. "You'd rather let the real murderer walk free, just so you can wallow in self-pity?"",
+        "\"You think your guilt is worth more than justice?\" Helena interrupted, voice as cool and flat as the stone beneath them. \"You'd rather let the real murderer walk free, just so you can wallow in self-pity?\"",
         "A single flex of his fingers, and she was lifted from the ground, her tiny body dangling like a broken marionette.",
         "She stood like a creature made for places like this—a predator at ease, watching the chaos she had orchestrated unfold with a faint, knowing smirk.",
-        "She hadn't built Umbra Reserve to survive an apocalypse, but she had prepared for the worst. The distillery itself? Easily rebuilt. But the liquor? That was something else. Alcohol was always valuable, always barter-worthy, no matter what happened to the world around it. ",
-        ""The necromancer," she said slowly, each word pulled up from the place where memory had been buried deep and carefully. "He used to talk about her. He'd mention her while he was carving into my bones. Always with reverence. Almost with sorrow.""
+        "She hadn't built Umbra Reserve to survive an apocalypse, but she had prepared for the worst. The distillery itself? Easily rebuilt. But the liquor? That was something else. Alcohol was always valuable, always barter-worthy, no matter what happened to the world around it.",
+        "\"The necromancer,\" she said slowly, each word pulled up from the place where memory had been buried deep and carefully. \"He used to talk about her. He'd mention her while he was carving into my bones. Always with reverence. Almost with sorrow.\""
     ];
 
     let randomIndex;
