@@ -114,6 +114,17 @@ function initFloatingQuotes() {
     function scheduleRandomQuote(side) {
         const randomDelay = Math.random() * 6000 + 3000; // 3-9 seconds
         setTimeout(() => {
+            // Remove existing quote on this side before creating new one
+            if (activeQuotes[side]) {
+                activeQuotes[side].style.opacity = '0';
+                activeQuotes[side].style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    if (activeQuotes[side] && activeQuotes[side].parentNode) {
+                        activeQuotes[side].parentNode.removeChild(activeQuotes[side]);
+                    }
+                    activeQuotes[side] = null;
+                }, 300);
+            }
             createFloatingQuote(side);
             scheduleRandomQuote(side); // Schedule the next one
         }, randomDelay);
@@ -130,6 +141,9 @@ function initFloatingQuotes() {
 
 // Track last used quote to avoid immediate repeats
 let lastUsedQuoteIndex = -1;
+
+// Track active quotes on each side
+let activeQuotes = { left: null, right: null };
 
 function createFloatingQuote(side = null) {
     const quotes = [
@@ -186,6 +200,8 @@ function createFloatingQuote(side = null) {
     
     if (heroBackground) {
         heroBackground.appendChild(quoteBubble);
+        // Track this quote as active on its side
+        activeQuotes[isLeftSide ? 'left' : 'right'] = quoteBubble;
     }
     
     // Animate in
