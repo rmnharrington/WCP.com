@@ -116,6 +116,10 @@ function initFloatingQuotes() {
 
 function createFloatingQuote() {
     const quotes = [
+        "The stars whispered secrets only the brave could hear...",
+        "In the shadows of history, love finds its way.",
+        "The future belongs to those who dare to dream it.",
+        "Every mystery holds a truth waiting to be discovered.",
         "The pen is mightier than the sword, but the imagination is mightier than both.",
         "In every story lies a universe waiting to be explored.",
         "Words have the power to create worlds and destroy empires.",
@@ -124,10 +128,7 @@ function createFloatingQuote() {
         "Every character is a piece of the author's soul.",
         "The greatest adventures begin with a single word.",
         "In the silence between words, magic happens.",
-        "From the depths of space to the corridors of power, stories transport us.",
-        "Every mystery holds a truth waiting to be discovered.",
-        "The future belongs to those who dare to dream it.",
-        "In the shadows of history, love finds its way."
+        "From the depths of space to the corridors of power, stories transport us."
     ];
 
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];

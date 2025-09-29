@@ -193,37 +193,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.quote-1 {
-    top: 20%;
-    left: 10%;
-    animation-delay: 0s;
-    max-width: 250px;
-}
-
-.quote-2 {
-    top: 30%;
-    right: 15%;
-    left: auto;
-    animation-delay: 2s;
-    max-width: 250px;
-}
-
-.quote-3 {
-    bottom: 30%;
-    left: 20%;
-    top: auto;
-    animation-delay: 4s;
-    max-width: 250px;
-}
-
-.quote-4 {
-    bottom: 20%;
-    right: 10%;
-    left: auto;
-    top: auto;
-    animation-delay: 1s;
-    max-width: 250px;
-}
 
 @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
