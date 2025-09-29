@@ -183,8 +183,6 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 300px;
     animation: float 6s ease-in-out infinite;
     z-index: 2;
-    top: 0;
-    left: 0;
 }
 
 .quote-bubble p {
@@ -199,24 +197,32 @@ h1, h2, h3, h4, h5, h6 {
     top: 20%;
     left: 10%;
     animation-delay: 0s;
+    max-width: 250px;
 }
 
 .quote-2 {
     top: 30%;
     right: 15%;
+    left: auto;
     animation-delay: 2s;
+    max-width: 250px;
 }
 
 .quote-3 {
     bottom: 30%;
     left: 20%;
+    top: auto;
     animation-delay: 4s;
+    max-width: 250px;
 }
 
 .quote-4 {
     bottom: 20%;
     right: 10%;
+    left: auto;
+    top: auto;
     animation-delay: 1s;
+    max-width: 250px;
 }
 
 @keyframes float {
