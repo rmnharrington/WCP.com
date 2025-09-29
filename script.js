@@ -123,9 +123,13 @@ function initFloatingQuotes() {
                         activeQuotes[side].parentNode.removeChild(activeQuotes[side]);
                     }
                     activeQuotes[side] = null;
+                    // Create new quote after old one is removed
+                    createFloatingQuote(side);
                 }, 300);
+            } else {
+                // No existing quote, create immediately
+                createFloatingQuote(side);
             }
-            createFloatingQuote(side);
             scheduleRandomQuote(side); // Schedule the next one
         }, randomDelay);
     }
@@ -210,16 +214,7 @@ function createFloatingQuote(side = null) {
         quoteBubble.style.transform = 'translateY(0)';
     }, 100);
     
-    // Remove after 6 seconds
-    setTimeout(() => {
-        quoteBubble.style.opacity = '0';
-        quoteBubble.style.transform = 'translateY(-20px)';
-        setTimeout(() => {
-            if (quoteBubble.parentNode) {
-                quoteBubble.parentNode.removeChild(quoteBubble);
-            }
-        }, 500);
-    }, 6000);
+    // Note: Removal is now handled by the scheduling function
 }
 
 // Audio player functionality
