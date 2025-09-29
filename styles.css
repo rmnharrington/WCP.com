@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 200px;
     width: auto;
     animation: float 6s ease-in-out infinite;
-    z-index: 2;
+    z-index: 1;
     word-wrap: break-word;
     white-space: normal;
 }
