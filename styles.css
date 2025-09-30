@@ -210,10 +210,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-content {
     text-align: center;
-    z-index: 1001;
-    position: relative;
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 800px;
     padding: 100px 20px 0 20px;
+    width: 100%;
 }
 
 .hero-title {
@@ -242,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem;
     border-radius: 15px;
     position: relative;
-    z-index: 1002;
+    z-index: 10000;
 }
 
 .hero-buttons {
